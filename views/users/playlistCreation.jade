@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  h1 Create A Playlist For Your Spawn!
+  p=user.email
+  div.forms
+    form(action='/users/createPlaylist' method='post')
+      div
+            label Who is the playlist for?
+        input(type='text' name='playlist_recipient')
+      div
+            label Playlist Name
+        input(type='text' name='playlist_name')
+      div
+        input(type='submit')
+

@@ -1,0 +1,9 @@
+extends ../layout
+
+block content
+    h1 Playlist show page
+    each playlist in userPlaylists
+      p
+        a(href='/users/playlist/' + playlist._id)=playlist.playlist
+    //- p #{user.email}
+    //- p #{userPlaylists}

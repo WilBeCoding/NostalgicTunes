@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  h1 You made me... PROMISES PROMISES
+  p Fk Yea 80s music
+  div
+    if errors
+      for messages in errors
+        p=messages
+  div
+    form(action='/users/registration' method='post')
+      div
+          label E-mail
+      input(type='text' name='user_email')
+      div
+          label Password
+      input(type='password' name="user_password")
+      div 
+          label Password Confirmation
+      input(type='password' name='user_password_confirmation')
+      div
+        input(type='submit')

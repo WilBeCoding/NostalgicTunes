@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1 Welcome To The Dashboard!
+  div
+    p=user.email
+  div
+    a(href='/') Logout!
+  div
+    a(href='/users/playlistCreation') Create a playlist!
+  div
+    a(href='/users/playlists/' + user._id) View your playlists!

@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    h1=playlist.playlist
+    br
+    h2 Add a song to #{recipient.name}'s playlist
+    br
+    h2 Add A Song
+    div.forms
+      form(action='/users/addasong/' + playlist._id method='post')
+        div
+            label Artist
+        input(type='text' name='artist_name')
+        div
+            label Song
+        input(type='text' name='song_name')
+        div
+        input(type='submit' value='Add The Tune!')

@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAAA,KAIA,KAHE,OAAA,EAOF,OACE,YAAA","file":"style.min.css","sourceRoot":"/source/","sourcesContent":["body {\n  margin:0;\n}\n\nhtml {\n  margin: 0\n}\n\n.forms{\n  margin-left:15%\n}"]}

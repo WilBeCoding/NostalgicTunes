@@ -1,0 +1,103 @@
+doctype html
+html
+  head
+    title= title
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/style.scss')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/animate.css')
+    link(rel='stylesheet', href='/buttons/css/buttons.css')
+    link(rel='stylesheet', href='/buttons/scss/buttons.scss')
+    script(scr='/buttons/js/buttons.js')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+    script(src="/bootstrap/js/bootstrap.min.js")
+    script(src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js")
+    //- script(src="/javascripts/jquery.js")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    if(!user)
+      nav.navbar.navbar-default
+           .container-fluid
+             .navbar-header
+               button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                 span.sr-only Toggle navigation
+                 span.icon-bar
+                 span.icon-bar
+                 span.icon-bar
+               a.navbar-brand(href='/') Brand
+             #bs-example-navbar-collapse-1.collapse.navbar-collapse
+               ul.nav.navbar-nav
+                 li.active
+                   a(href='#')
+                     | Link 
+                     span.sr-only (current)
+                 li
+                   a(href='/users/register') Register
+                 li.dropdown
+                   a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                     | Dropdown 
+                     span.caret
+                   ul.dropdown-menu(role='menu')
+                     li
+                       a(href='#') Action
+                     li
+                       a(href='#') Another action
+                     li
+                       a(href='#') Something else here
+                     li.divider
+                     li
+                       a(href='#') Separated link
+                     li.divider
+                     li
+                       a(href='#') One more separated link
+               form#signin.navbar-form.navbar-right(action='/users/login' method='post')
+                 .input-group
+                   span.input-group-addon
+                     i.glyphicon.glyphicon-user
+                   input#email.form-control(type='email', name='user_email', value='', placeholder='Email Address')
+                 .input-group
+                   span.input-group-addon
+                     i.glyphicon.glyphicon-lock
+                   input#password.form-control(type='password', name='user_password', value='', placeholder='Password')
+                 button.btn.btn-primary(type='submit') Login
+    if(user)
+      nav.navbar.navbar-default
+           .container-fluid
+             .navbar-header
+               button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                 span.sr-only Toggle navigation
+                 span.icon-bar
+                 span.icon-bar
+                 span.icon-bar
+               a.navbar-brand(href='/') Home
+             #bs-example-navbar-collapse-1.collapse.navbar-collapse
+               ul.nav.navbar-nav
+                 li.active
+                   a(href='#')
+                     | Link 
+                     span.sr-only (current)
+                 li
+                   a(href='/users/dashboard') Dashboard
+                 li.dropdown
+                   a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                     | Playlists
+                     span.caret
+                   ul.dropdown-menu(role='menu')
+                     li
+                       a(href='/users/show') Your Playlists
+                     li
+                       a(href='#') Another action
+                     li
+                       a(href='#') Top Playlists
+                     li.divider
+                     li
+                       a(href='#') Separated link
+                     li.divider
+                     li
+                       a(href='#') One more separated link
+               form#signin.navbar-form.navbar-right
+                  lie.active
+                    a(href='/users/logout') Logout
+
+    block content
