@@ -3,9 +3,32 @@ body {
 }
 
 html {
-  margin: 0
+  margin: 0;
+  background: url(http://www.publicdomainpictures.net/pictures/10000/velka/87-1265714548Otmq.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
 }
 
 .forms{
-  margin-left:15%
+  text-align: center;
+}
+
+.contentHeader{
+    text-align: center;
+}
+
+.indexPage{
+    position: absolute;
+}
+
+.indexContainer{
+    margin-left: 26%;
+    height:75vh;
+    width:50vw;
+    background-color:orange;
+    position:absolute;
+    text-align: center;
 }

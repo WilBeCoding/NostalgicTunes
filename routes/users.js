@@ -21,7 +21,9 @@ router.get('/register', function(req, res, next) {
 })
 
 router.post('/registration', function(req, res, next){
-  req.session.email = req.body.user_email
+  // req.session.email = req.body.user_email
+  req.session.user = req.body.user_email;
+  user = req.session.user;
   var errors = [];
   if(!req.body.user_email.trim()){
     errors.push("Email cannot be empty");
@@ -150,6 +152,7 @@ router.post('/createPlaylist', function(req, res, next) {
 router.get('/playlists/:id', function(req,res,next) {
   var user = req.session.user;
   console.log(user, '  -------- user above findOne in playlists/:id route');
+  // console.log(' ')
   PlaylistDB.findForUser(user._id).then(function(userPlaylists){
     console.log(userPlaylists, '----=-=-=- UserPlaylists under playlistDB')
     res.render('users/viewplaylists', {user:user, userPlaylists:userPlaylists})
