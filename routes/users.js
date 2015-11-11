@@ -8,7 +8,6 @@ var Recipient = require('../lib/recipientRoutes.js');
 var SongsDB = require('../lib/songRoutes.js');
 var testPlaylist = db.get('playlist');
 
-
 /* GET users listing. */
 router.get('/user', function(req, res, next) {
   // req.session.user = req.body.user_email
@@ -78,8 +77,6 @@ router.post('/login', function(req, res, next) {
     if(errors.length === 0) {
       req.session.user = user
       user = req.session.user
-      console.log(user, ' -----------------=-=-=-=-=- user in the login route');
-      console.log(user._id, '------------- userID in the login route');
       res.render('users/dashboard', {user:user})
     }else{
       res.render('index', {errors:errors , title: 'Nostalgic Tunes'})
@@ -93,17 +90,14 @@ router.get('/logout', function(req,res,next) {
 })
 
 router.get('/dashboard', function(req,res,next) {
-  console.log('dashboard get route is hitting');
   var user = req.session.user
   User.findOne(user.email).then(function(user){
-  console.log(user, 'after the findOne method in the dashboard get route')
   res.render('users/dashboard', {user:user})    
   })
 })
 
 router.get('/playlistCreation', function(req, res, next) {
   var user = req.session.user
-  console.log(user, ' ------- user in the playlist creation route')
   res.render('users/playlistCreation', {user:user})
 })
 
@@ -111,21 +105,13 @@ router.post('/createPlaylist', function(req, res, next) {
   var user = req.session.user
   var userVariable;
   var playlistNameData;
+  // console.log(user.email, ' 0000')
   User.findOne(user.email)
     .then(function(currentUser) {
-      // var userVariable = user
-      // console.log(req.body.playlist, ' req.body.playlist in the createplaylist post route')
-      console.log(currentUser._id, '==========------ user after the user.findone in the createplaylist route')
       Recipient.insert(req.body.playlist_recipient, currentUser._id)
         .then(function(playlistRecipient){
-          console.log(currentUser._id, ' ====== currentUser._id'); //Works properly
-          console.log(req.body.playlist_name, 'playlist name'); //Works properly
-          console.log(playlistRecipient._id, ' --------------- recip ID'); //Works properly
           PlaylistDB.insert(req.body.playlist_name, playlistRecipient._id, currentUser._id)
             .then(function(playlist){
-            console.log(playlist, ' playlist under playlistDB.insert') //Doesn't hit
-            console.log(playlistRecipient, '======= ---- playlistRecipient')
-            console.log(currentUser, '------------ currentUser in the createPlaylist route')
             res.render('users/realaddasong', {user: currentUser, playlist:playlist,recipient:playlistRecipient})
         	})
       })
@@ -134,24 +120,16 @@ router.post('/createPlaylist', function(req, res, next) {
 
 router.get('/playlists/:id', function(req,res,next) {
   var user = req.session.user;  
-  console.log(user, ' -- user before PlaylistDB is called')
   PlaylistDB.findForUser(user._id).then(function(userPlaylists){
-    console.log(userPlaylists)
     res.render('users/viewplaylists', {user:user, userPlaylists:userPlaylists})
   })
 })
 
 router.get('/playlist/:id', function(req, res,next) {
   var user = req.session.user;
-  // console.log(user, ' ----- user within the playlist id get route');
-  // console.log(req.params.id, '--0-0-0-0-0-0===== req.params.id in the playlistID route')
   PlaylistDB.findOne(req.params.id).then(function(playlist){
-	    // console.log(playlist._id, ' -----=-=-=-=-=-=-=- playlistId in the playlist/:id route')
   	SongsDB.findAllForPlaylist(playlist).then(function(songs){
-      console.log(songs, '++++++++++++++ songs in the playlist id get route')
-      console.log(playlist.recipientId, '-----playlist.recipID before recipients findOne')
       Recipient.findOne(playlist.recipientId).then(function(recipient){
-        console.log(recipient, '++++++++++++++ recipient in the playlist id get route')
         res.render('users/playlistEdit', {playlist: playlist, user:user, songs: songs, recipient: recipient})
       })
     })
@@ -160,21 +138,15 @@ router.get('/playlist/:id', function(req, res,next) {
 
 router.post('/addasong/:id', function(req, res, next){
 	var user = req.session.user;
-	// console.log('The add a song post route is hitting')
 	PlaylistDB.findOne(req.params.id).then(function(playlist){
-    // console.log(playlist, 'playlist after PlaylistDB.findOne in the addasong route')
 		SongsDB.insert(req.body.song_name, req.body.artist_name).then(function(song){
-      console.log(playlist, ' playlist under the SongsDB.insert method')
-			console.log(song, '-----=-=-=-=--=-=- song after SongsDB.insert')
+      console.log(song, ' song in playlist')
 			PlaylistDB.insertSong(playlist._id, song._id).then(function(playlistForInsertSong){
-        // console.log(playlist, ' ============= playlist after insertSong in this fucking addasong route')
-        // console.log(req.params.id, '------- req.params.id in the addasong post route just above the findAllForPlaylist function')
-        console.log(playlistForInsertSong, ' ------------- playlistForInsertSong after playlistDB.insertsong')
 				SongsDB.findAllForPlaylist(playlist).then(function(songs){
-        console.log(songs, '------- songs after the findAllforplaylist in the addasong post route')
-				console.log(playlist, '--------------- playlist after SongsDB.findAllForPlaylist')
-        // console.log(playlistTwo, '--------------- playlistIdVariable in the addlasong post route')
-				res.render('users/playlistEdit', {playlist:playlist, songs:songs, user:user, playlistForInsertSong: playlistForInsertSong})
+          Recipient.findOne(playlist.recipientId).then(function(recipient){
+            console.log(songs, ' songs in the add a song route')
+  				  res.render('users/playlistEdit', {playlist:playlist, songs:songs, user:user, playlistForInsertSong: playlistForInsertSong, recipient:recipient, song:song})
+          })
 				})
 			})
 		})
@@ -184,7 +156,7 @@ router.post('/addasong/:id', function(req, res, next){
 router.post('/editPlaylist', function(req,res,next){
   var user = req.session.user
   PlaylistDB.findOne(playlist).then(function(playlist){
-    Recipients.findOne(recipient).then(function(recipient){
+    Recipient.findOne(recipient).then(function(recipient){
 		    res.render('users/playlistEdit')
     })
   })
@@ -192,14 +164,8 @@ router.post('/editPlaylist', function(req,res,next){
 
 router.get('/realaddasong/:id', function(req, res, next) {
 	var user = req.session.user
-	console.log(user, '======================= user in the realaddasongroute');
-  // console.log(playlist, '----------- playlist atop the realaddasong get route')
-	console.log(req.params.id, ' -----=-=-=-=-= req.params.id in the realaddasong geet route')
 	PlaylistDB.findOne(req.params.id).then(function(playlist){
-		// console.log("this hits")
-		console.log(playlist.recipientId, '------ Playlist.recipientId in the realaddsong route');
 		Recipient.findOne(playlist.recipientId).then(function(recipient){
-			console.log(recipient, ' ----- recipient in the realaddsong get route')
 			res.render('users/realaddasong', {playlist:playlist, recipient:recipient, user:user})
 		})
 	})
@@ -216,10 +182,6 @@ router.get('/show', function(req,res,next){
   PlaylistDB.findAll().then(function(playlists) {
     User.findAll().then(function(usersFound){
       Recipient.findAll().then(function(recipients){
-      // console.log(usersFound, ' --------------- users within the recip.findall route');
-      // console.log(user, ' ----------^-^_^_^_----- user in the recipients.findAll bullshit');
-      // console.log(playlists, ' ----=-=-=-=-=---- Playlist within the recip.finall in the show route')
-      console.log(recipients, ' ----------^-^_^_^_----- recipients in the recipients.findAll bullshit');
       res.render('users/show', {playlists: playlists, usersFound:usersFound, recipients:recipients})
       })
     })
