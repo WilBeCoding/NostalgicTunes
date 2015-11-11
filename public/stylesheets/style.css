@@ -1,29 +1,706 @@
-body {
-  margin: 0;
-  background-size: cover;
-  position: relative; }
-
 html {
   margin: 0; }
 
-.forms {
-  text-align: center; }
+body {
+  margin: 0;
+  /* border: 1px solid transparent; */ }
 
-.contentHeader {
-  text-align: center; }
+.container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around; }
 
-.indexPage {
-  position: absolute; }
+.container .playsPlacement {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 50%;
+  width: 50%; }
 
-.indexContainer {
-  margin-left: 26%;
-  height: 75vh;
-  width: 50vw;
-  background-color: orange;
-  position: absolute;
-  text-align: center; }
+.container .pregame {
+  height: 42%;
+  width: 100%;
+  text-align: center;
+  /* margin-top: -1%; */ }
 
-.wrapper {
+.container .passPlays {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  height: 70%;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  /* margin-top: -2%; */ }
+
+.container .passPlays .smash {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 98%;
+  width: 33.25%;
+  text-align: center;
+  font-family: 'Alfa Slab One', cursive;
   position: relative; }
+
+.container .passPlays .bobsyouruncle {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: 'Alfa Slab One', cursive;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 98%;
+  width: 33.25%;
+  position: relative;
+  text-align: center; }
+
+.container .buttons .snap input {
+  /* margin: 0 auto; */ }
+
+.huthutHIKEbttn {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%; }
+
+.container .passPlays .fourverticals {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 98%;
+  position: relative;
+  width: 33.25%;
+  font-family: 'Alfa Slab One', cursive;
+  text-align: center; }
+
+.container .topLeft {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 45%;
+  width: 100%; }
+
+.container .scoreBoard {
+  height: 10%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  font-family: 'Alfa Slab One', cursive;
+  /* margin-right: 1%; */ }
+
+.container .topLeft img {
+  height: 166px;
+  width: 200px;
+  border: 1px solid black; }
+
+.container .topLeft h1 {
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+  font-family: 'Black Ops One', cursive; }
+
+.progressionChoice {
+  height: 100%;
+  position: flex-start;
+  width: 25.5%;
+  /* background-color: blue; */
+  color: black;
+  font-weight: bold;
+  background-color: grey;
+  margin-top: -2%; }
+
+.container .topRight {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 50%;
+  width: 33%;
+  position: relative; }
+
+.container .topRight h1 {
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+          align-self: center; }
+
+.container .table {
+  height: 50%;
+  width: 33%;
+  position: relative; }
+
+.container .passImage {
+  height: 200px;
+  width: 200px;
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+          align-self: center; }
+
+.container .runImage {
+  height: 200px;
+  width: 200px;
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+          align-self: center; }
+
+.container .field {
+  background: url(../images/footballField.png);
+  background-repeat: no-repeat;
+  background-size: 100% 105%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 45%;
+  width: 100%;
+  position: relative;
+  left: 0;
+  right: 0;
+  /* margin-left: -16px; */ }
+
+.container .field .footballIMG {
+  max-height: 40px;
+  max-width: 40px;
+  position: fixed;
+  top: 49%;
+  left: 22.2%;
+  -ms-flex-item-align: start;
+  -webkit-align-self: flex-start;
+          align-self: flex-start; }
+
+.container .field .playClock {
+  -ms-flex-item-align: start;
+  -webkit-align-self: flex-start;
+          align-self: flex-start;
+  position: relative;
+  height: 150vh;
+  width: 100%; }
+
+.container .field .playClockDiv {
+  -ms-flex-item-align: start;
+  -webkit-align-self: flex-start;
+  /* align-self: flex-start; */
+  position: relative;
+  /* margin-right: 450px; */
+  /* margin-top: -10%; */
+  /* margin-bottom: 51%; */
+  /* height: 150vh; */
+  width: 54%;
+  padding-bottom: 1%;
+  padding-right: 3%;
+  /* padding-left: 47.8%; */ }
+
+.container .field .hiddenPlayClock {
+  display: none; }
+
+.container .field #playClock {
+  font-size: 45pt;
+  color: red;
+  font-weight: bold;
+  height: 100%;
+  /* width: 70%; */
+  /* margin: 0 auto; */
+  padding-left: 88.5%;
+  padding-right: -13%;
+  text-shadow: 1px 1px 1px #000; }
+
+.container .field .defensiveRead {
+  height: 75%;
+  width: 50%;
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+          align-self: center;
+  opacity: 0; }
+
+.container .field .defensiveSpan {
+  height: 30%;
+  width: 100vw;
+  opacity: 1;
+  position: relative;
+  font-size: 37px;
+  padding-bottom: 8%;
+  font-weight: bold;
+  text-align: center; }
+
+.container .field .offensiveLineSpan {
+  height: 50%;
+  width: 100vw;
+  opacity: 1;
+  position: relative;
+  /* margin-top: 20%; */
+  /* margin-bottom: -139%; */
+  font-size: 35px;
+  padding-top: 5%;
+  backgound-color: red;
+  font-weight: bold;
+  text-align: center;
+  padding-left: 29%;
+  padding-top: 16%; }
+
+.offensiveLineSpanContainer {
+  width: 100vw;
+  height: 32%;
+  z-index: 1;
+  position: absolute;
+  margin-top: -8%;
+  /* background-color: orange; */ }
+
+.container .buttons {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 44%;
+  width: 100%;
+  /* margin-top: 25px; */
+  background-color: blue; }
+
+.container .buttons .snap {
+  margin: 0 auto;
+  width: 100%;
+  height: 50%; }
+
+.buttonSnap {
+  margin-left: 47%; }
+
+.hikeButtonContainer {
+  color: orange;
+  height: 100%;
+  width: 100%; }
+
+.preSnapReadContainer {
+  color: blue;
+  height: 107%;
+  width: 100%;
+  position: relative;
+  /* align-content: center; */
+  /* margin-top: -11%; */
+  /* padding-bottom: 17%; */ }
+
+.bottomButtonContainer {
+  height: 89%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row; }
+
+.introImg {
+  height: 100%;
+  width: 25%;
+  z-index: 1;
+  position: absolute;
+  margin: 0 auto;
+  padding-top: 0%;
+  padding-left: 39%; }
+
+.container .buttons .WRbuttons {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 100px;
+  width: 100%;
+  /* margin-left: 9%; */
+  /* margin: 0 auto; */
+  text-align: center;
+  paddin-left: 7%; }
+
+.container .buttons .WRbuttons .wr1 {
+  text-align: center;
+  /* padding-left: 25%; */
+  height: 13%;
+  width: 30px;
+  /* margin-right: 25%; */ }
+
+.container .buttons .WRbuttons .wr2 {
+  -ms-flex-item-align: center;
+  -webkit-align-self: center;
+          align-self: center;
+  text-align: center;
+  height: 100px;
+  width: 10%; }
+
+.container .buttons .WRbuttons .wr3 {
+  text-align: center;
+  /* padding-right: 25%; */
+  height: 100px;
+  width: 30px; }
+
+.container .buttons .WRbuttons .wr4 {
+  text-align: center;
+  padding-right: 25%;
+  height: 100px;
+  width: 10%; }
+
+.container .birdsEyeImg {
+  height: 83%;
+  width: 69%;
+  /* margin-left: -52%; */
+  /* margin: 0 auto; */
+  /* margin-top: 3%; */
+  padding-left: 15%;
+  padding-top: 1%; }
+
+.visible {
+  visibility: visible;
+  margin: 0 auto; }
+
+.invisible {
+  visibility: hidden;
+  height: 0px;
+  width: 0px; }
+
+.show_hide {
+  display: none; }
+
+.show_hide1 {
+  display: none; }
+
+.placeholderButtons {
+  display: none; }
+
+.placeHoldersnap {
+  display: none; }
+
+.placeholderBirdsEyeView {
+  display: none; }
+
+.placeholderWRbuttons {
+  display: none; }
+
+.buttonSnapPlaceholder {
+  display: none; }
+
+.placeHolderTopLeft {
+  display: none; }
+
+.placeHolderTopRight {
+  display: none; }
+
+.placeholderTable {
+  display: none; }
+
+.placeholderPregame {
+  display: none; }
+
+.center {
+  text-align: center;
+  height: -9%;
+  }
+
+td {
+  padding-top: 20px;
+  font-size: 30pt;
+  margin-left: 10%; }
+
+table {
+  margin-left: 30%; }
+
+.placeholderHowToPlayDiv {
+  display: none; }
+
+.placeHolderDefensiveSpan {
+  display: none; }
+
+.placeholderOffensiveLineSpanContainer {
+  display: none; }
+
+.placeholderOffensiveLineSpan {
+  display: none; }
+
+.howToContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+.pregameContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+.pregameMask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 10, 20, 0.6); }
+
+.placeholderProgressionChoice {
+  display: none; }
+
+.howToContainer::after {
+  content: '';
+  background-image: url(../images/Rivers.jpg);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  -webkit-filter: blur(2px);
+  background-position: right 260px top;
+  -moz-filter: blur(2px);
+  -ms-filter: blur(2px);
+  -o-filter: blur(2px);
+  -webkit-filter: blur(2px);
+  filter: blur(2px); }
+
+.mask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 10, 20, 0.6); }
+
+.howToPlayDiv {
+  margin: auto;
+  color: white;
+  text-shadow: 3px 2px 5px #000; }
+
+.hider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-size: cover; }
+
+.pages {
+  font-family: 'Vollkorn', serif;
+  display: none; }
+
+.howToPlayDiv:first-child {
+  -webkit-justify-content: top;
+  position: top;
+  -ms-flex-pack: top;
+  -webkit-justify-content: top;
+  justify-content: top;
+  margin-top: 0;
+  -ms-flex-line-pack: left;
+  -webkit-align-content: left;
+          align-content: left;
+  width: 75%;
+  margin-left: 2%; }
+
+.placeholderProgressionDiv {
+  display: none; }
+
+.progressionContainer {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+.progressionContainer::after {
+  content: '';
+  background-image: url(../images/AaronRodgers.jpg);
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  -webkit-filter: blur(2px);
+  background-position: right 260px top;
+  -moz-filter: blur(2px);
+  -ms-filter: blur(2px);
+  -o-filter: blur(2px);
+  -webkit-filter: blur(2px);
+  filter: blur(2px); }
+
+.progressionDiv {
+  z-index: 1;
+  width: 100%;
+  margin: auto;
+  color: white;
+  text-shadow: 3px 2px 5px #000; }
+
+.progressionPages {
+  /* margin: 5%; */
+  /* margin-left: 17%; */
+  text-align: center;
+  display: none;
+  width: 100%; }
+
+.progressionDiv h1 {
+  text-align: center;
+  font-family: 'Martel', serif;
+  text-shadow: 4px 4px 4px #000;
+  /* margin-left: -34%; */ }
+
+.progressionPages .progButtons {
+  height: 56%;
+  width: 17%; }
+
+.progressionMask {
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 10, 20, 0.6); */ }
+
+.progressionHider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-size: cover; }
+
+.progressionContainer:first-child {
+  -webkit-justify-content: top;
+  position: top;
+  -ms-flex-pack: top;
+  -webkit-justify-content: top;
+  justify-content: top;
+  /* margin-top: 0; */
+  -ms-flex-line-pack: left;
+  /* -webkit-align-content: left; */
+  /* align-content: left; */
+  width: 98%;
+  margin-left: 2%;
+  height: 100%;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  /* margin-top: 3%; */ }
+
+.topLeft .howToPlayButton {
+  height: 25%;
+  width: 25%;
+  margin-left: 37%;
+  position: absolute;
+  margin-top: -2%; }
+
+.pregame .center .howToPlayButton {
+  margin-top: -0%; }
+
+@media (max-width: 480px) {
+  .container .field {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px); }
+
+  .container .field
+  .footballIMG {
+    max-height: 25px;
+    max-width: 25px;
+    position: fixed;
+    top: 35%;
+    left: 20.2%;
+    -ms-flex-item-align: start;
+    -webkit-align-self: flex-start;
+            align-self: flex-start; }
+
+  .container .pregame {
+    height: 100%;
+    position: relative; }
+
+  .container .passImage {
+    height: 25%;
+    width: 100%;
+    -ms-flex-item-align: center;
+    -webkit-align-self: center;
+            align-self: center;
+    border: 1px solid black; }
+
+  h1 {
+    font-size: 25px; }
+
+  td {
+    font-size: 12px; }
+
+  .container .table {
+    position: relative; }
+
+  table {
+    top: 0; }
+
+  .container .field #playClock {
+    color: red;
+    margin-left: 80%; }
+
+  .container .birdsEyeImg {
+    margin-top: 20%;
+    margin-left: -21%; }
+
+  .container .buttons .WRbuttons .wr1 {
+    padding: 0; }
+
+  .container .buttons .WRbuttons .wr2 {
+    text-align: center; }
+
+  .container .buttons .WRbuttons .wr3 {
+    text-align: center; } }
 
 
