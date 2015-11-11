@@ -6,6 +6,7 @@ var PlaylistDB = require('../lib/playlistRoutes.js');
 var User = require('../lib/usersRoutes.js');
 var Recipient = require('../lib/recipientRoutes.js');
 var SongsDB = require('../lib/songRoutes.js');
+var testPlaylist = db.get('playlist');
 
 
 /* GET users listing. */
@@ -81,7 +82,7 @@ router.post('/login', function(req, res, next) {
       console.log(user._id, '------------- userID in the login route');
       res.render('users/dashboard', {user:user})
     }else{
-      res.render('index', {errors:errors})
+      res.render('index', {errors:errors , title: 'Nostalgic Tunes'})
     }
   })
 })
@@ -113,7 +114,7 @@ router.post('/createPlaylist', function(req, res, next) {
   User.findOne(user.email)
     .then(function(currentUser) {
       // var userVariable = user
-      console.log(req.body.playlist, ' req.body.playlist in the createplaylist post route')
+      // console.log(req.body.playlist, ' req.body.playlist in the createplaylist post route')
       console.log(currentUser._id, '==========------ user after the user.findone in the createplaylist route')
       Recipient.insert(req.body.playlist_recipient, currentUser._id)
         .then(function(playlistRecipient){
@@ -131,44 +132,29 @@ router.post('/createPlaylist', function(req, res, next) {
    })
 })
 
-// router.get('/playlist/:id', function(req, res, next) {
-//   req.session.user = req.body.user_email;
-//   user = req.session.user;
-//   console.log(user + "  ---------------- user email in the /playlist/:id route");
-//   var userData;
-//   var playlistData;
-//   User.findOne(userEmail)
-//     .then(function(user){
-//       userData = user;
-//       return Playlists.findOne({_id: playlist.creatorId})
-//     })
-//     .then(function(playlist) {
-//       console.log(arguments + " ------------ argument for playlist in the playlist/:id route")
-//       var playlistData = playlist;
-//       res.render('users/playlistShow', {user: userData, playlist: playlistData})
-//    })
-// })
-
 router.get('/playlists/:id', function(req,res,next) {
-  var user = req.session.user;
-  console.log(user, '  -------- user above findOne in playlists/:id route');
-  // console.log(' ')
+  var user = req.session.user;  
+  console.log(user, ' -- user before PlaylistDB is called')
   PlaylistDB.findForUser(user._id).then(function(userPlaylists){
-    console.log(userPlaylists, '----=-=-=- UserPlaylists under playlistDB')
+    console.log(userPlaylists)
     res.render('users/viewplaylists', {user:user, userPlaylists:userPlaylists})
   })
 })
 
 router.get('/playlist/:id', function(req, res,next) {
   var user = req.session.user;
-  console.log(user, ' ----- user within the playlist id get route');
-  console.log(req.params.id, '--0-0-0-0-0-0===== req.params.id in the playlistID route')
+  // console.log(user, ' ----- user within the playlist id get route');
+  // console.log(req.params.id, '--0-0-0-0-0-0===== req.params.id in the playlistID route')
   PlaylistDB.findOne(req.params.id).then(function(playlist){
-	    console.log(playlist._id, ' -----=-=-=-=-=-=-=- playlistId in the playlist/:id route')
+	    // console.log(playlist._id, ' -----=-=-=-=-=-=-=- playlistId in the playlist/:id route')
   	SongsDB.findAllForPlaylist(playlist).then(function(songs){
-  		console.log(songs, '++++++++++++++ songs in the playlist id get route')
-	    res.render('users/playlistEdit', {playlist: playlist, user:user, songs: songs})
-  	})
+      console.log(songs, '++++++++++++++ songs in the playlist id get route')
+      console.log(playlist.recipientId, '-----playlist.recipID before recipients findOne')
+      Recipient.findOne(playlist.recipientId).then(function(recipient){
+        console.log(recipient, '++++++++++++++ recipient in the playlist id get route')
+        res.render('users/playlistEdit', {playlist: playlist, user:user, songs: songs, recipient: recipient})
+      })
+    })
   })
 })
 

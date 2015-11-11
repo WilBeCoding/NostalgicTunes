@@ -1,11 +1,10 @@
 body {
-  margin: 0; }
-
-html {
   margin: 0;
-  background: url(http://www.publicdomainpictures.net/pictures/10000/velka/87-1265714548Otmq.jpg) no-repeat center center fixed;
   background-size: cover;
   position: relative; }
+
+html {
+  margin: 0; }
 
 .forms {
   text-align: center; }
@@ -23,5 +22,8 @@ html {
   background-color: orange;
   position: absolute;
   text-align: center; }
+
+.wrapper {
+  position: relative; }
 
 

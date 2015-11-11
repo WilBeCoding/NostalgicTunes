@@ -2,6 +2,10 @@ extends layout
 
 block content
   div.wrapper
+    div
+      if errors
+        for messages in errors
+          p=messages
     div.blur
     div.indexPage
     .contentHeader
@@ -16,9 +20,6 @@ block content
       p You'll be provided a form via e-mail in intervals of your choosing where you can catalog the tunes
       p Suggestions will be provided with samples in case you don't know the name of some tunes!
       p Aim to use the spotify API and a mail client!
-    div
-      if errors
-          for message in errors
-              p=messages
+      p This idea is terrible but I need to polish it up so I have more on my portolio
 
 

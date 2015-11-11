@@ -3,12 +3,15 @@ extends ../layout
 block content
     h1=playlist.playlist
     br
-    h2 A playlist for #{playlist.recipientId}
+    h2 A playlist for #{recipient.name}
     br
     p
       a(href='/users/realaddasong/' + playlist._id) Add A Song!
-    p List Songs Here
-    p=playlist.songIds
     div
-      each title in songs
-        p=title.name
+      table.table.table-bordered
+        th Artist
+        th Song
+        for song in songs
+          tr
+            td=song.artist
+            td=song.name

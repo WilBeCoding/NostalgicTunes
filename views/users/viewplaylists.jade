@@ -1,8 +1,7 @@
 extends ../layout
 
 block content
-    h1 Playlist shoe page
-    h2 For all your shoe needs
+    h1 View all of your playlists!
     each playlist in userPlaylists
       p
         a(href='/users/playlist/' + playlist._id)=playlist.playlist
