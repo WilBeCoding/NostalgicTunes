@@ -21,27 +21,38 @@ router.get('/register', function(req, res, next) {
 })
 
 router.post('/registration', function(req, res, next){
+  console.log('The route hits');
   // req.session.email = req.body.user_email
   req.session.user = req.body.user_email;
   user = req.session.user;
   var errors = [];
   if(!req.body.user_email.trim()){
     errors.push("Email cannot be empty");
+    console.log('hits first if statement')
   }
   if(!req.body.user_email.match("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")) {
     errors.push("Email is invalid");
+        console.log('hits second if statement')
+
   }
   if(!req.body.user_password.trim()){
     errors.push("Password field cannot be empty");
+    console.log('hits third if statement')
+
   }
   if(req.body.user_password !== req.body.user_password_confirmation){
     errors.push("Passwords do not match");
+    console.log('hits fourth if statement')
+
   }
   User.findOne(req.body.user_email).then(function(user) {
     if(user) {
       errors.push("Email is already registered")
+      console.log('hits fifth if statement')
     }
     if(errors.length === 0) {
+      console.log('hits length of errors === 0 if statement')
+
       var hash = bcrypt.hashSync(req.body.user_password, 11);
       User.insert(req.body.user_email, hash).then(function(user) {
         req.session.user = user
@@ -49,6 +60,7 @@ router.post('/registration', function(req, res, next){
       res.render('users/dashboard', {user:user})  
       })
     }else{
+      console.log('Hits else statement')
       res.render('users/register', {errors:errors})
     } 
   })
