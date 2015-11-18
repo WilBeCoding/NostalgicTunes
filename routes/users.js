@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var db = require('monk')(process.env.MONGOLAB_URI || 'localhost/nostalgicTunes')
+var db = require('../lib/connection')
 var bcrypt = require('bcrypt');
 var PlaylistDB = require('../lib/playlistRoutes.js');
 var User = require('../lib/usersRoutes.js');
@@ -57,12 +57,14 @@ router.post('/registration', function(req, res, next){
       User.insert(req.body.user_email, hash).then(function(user) {
         req.session.user = user
         user = req.session.user
-      res.render('users/dashboard', {user:user})  
+        res.render('users/dashboard', {user:user})  
       })
     }else{
       console.log('Hits else statement')
       res.render('users/register', {errors:errors})
     } 
+  }).end(function(err) {
+    console.log(err)
   })
 })
 
