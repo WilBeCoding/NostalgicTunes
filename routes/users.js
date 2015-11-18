@@ -75,6 +75,7 @@ router.post('/login', function(req, res, next) {
       errors.push("Password is incorrect. Are you typing with your feet?")
     }
     if(errors.length === 0) {
+      console.log('No errors detected', ' ================== ')
       req.session.user = user
       user = req.session.user
       res.render('users/dashboard', {user:user})
