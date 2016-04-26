@@ -1,35 +1,181 @@
-body {
-  margin: 0;
-  background-size: cover;
-  position: relative; }
+.body {
+	background-color: #60c98f;
+}
 
-html {
-  margin: 0; }
 
-h1 {
-  font-family: 'IM Fell DW Pica', serif; }
+.sidebar {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 100%;
+    width: 300px;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.5);
+    font-family: "Lato";
+    color: black;
+    text-transform: uppercase;
+    box-shadow: 5px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+}
 
-h2 {
-  font-family: 'IM Fell DW Pica', serif; }
+.sideclose {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 100%;
+    width: 60px;
+    padding: 10px;
+    background-color: rgba(255,255,255,0.5);
+    font-family: "Lato";
+    color: black;
+    box-shadow: 5px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+}
 
-.forms {
-  text-align: center; }
+.link{
+    color: black;
+    text-decoration: none;
+}
 
-.contentHeader {
-  text-align: center; }
+.link:visited {
+    color: black;
+    text-decoration: none;
+}
 
-.indexPage {
-  position: absolute; }
+.link:hover {
+    color: #3C9A5F;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-.indexContainer {
-  margin-left: 26%;
-  height: 75vh;
-  width: 50vw;
-  background-color: orange;
-  position: absolute;
-  text-align: center; }
+.link:active {
+    color: #3C9A5F;
+    text-decoration: none;
+}
 
-.wrapper {
-  position: relative; }
+.sidebar > a {
+	margin-bottom: 50px;
+}
 
+.search {
+	border-radius: 10px;
+}
+
+.space {
+	height: 100px;
+}
+
+.fa-graduation-cap {
+	padding-left: 110px;
+}
+
+.title {
+	padding-left: 80px;
+
+}
+
+.subject {
+    background: transparent;
+    border: none;
+    border-bottom: 5px dashed black;
+    width: 500px;
+    outline: none;
+    padding: 0px 0px 0px 0px;
+    font-size: 50px;
+    color: black;
+}
+
+.deck {
+    margin-bottom: 25px;
+}
+.wrap {
+    word-wrap: break-word;
+    width: 400px;
+    margin-left: -30%;
+}
+
+.whiteOpen {
+  margin-left: 70%;
+  height: 350px;
+  width: 583px;
+  background-color: #F5F5F5;
+  box-shadow: 5px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.whiteClosed{
+  margin-left: -120%;
+  height: 350px;
+  width: 583px;
+  background-color: #F5F5F5;
+  box-shadow: 5px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.newcard {
+  background: transparent;
+  border: none;
+  width: 530px;
+  outline: none;
+  font-size: 20px;
+  color: black;
+}
+
+.ghost-button {
+  display: inline-block;
+  width: 200px;
+  padding: 8px;
+  color: #fff;
+  border: 1px solid #fff;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+}
+
+.ghost-button:hover,
+.ghost-button:active {
+  background-color: #fff;
+  color: #000;
+}
+
+
+.dash-title {
+  text-shadow: ;
+}
+
+textarea{
+  /*text-decoration: underline;*/
+  line-height:30px;
+  font-weight:bold;
+  color:#FF9900;
+  font-size: 20px;
+  resize:none;
+}
+
+form{
+  word-wrap: break-word;
+}
+
+label{
+  padding-left: 17%;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+}
+
+.submitCard {
+  margin-left: 58%;
+}
+
+.pasta {
+  position: relative;
+  padding-right: 400px;
+}
+
+.class1{
+
+  margin-left: 40%;
+}
+
+.class2{
+  margin-left: 20%;
+}
 
